@@ -5,4 +5,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  /* -webkit-text-fill-color: white; */
+  color: white;
+  background-color: #0d1117;
 }

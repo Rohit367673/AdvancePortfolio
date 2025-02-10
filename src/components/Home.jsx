@@ -1,20 +1,37 @@
 import React from "react";
 
-import pic from "../../public/photo.avif";
+import pic from "/public/WhatsApp Image 2025-02-09 at 12.45.28.jpeg";
 
-import { FaSquareFacebook } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
-import { IoLogoYoutube } from "react-icons/io";
-import { FaTelegram } from "react-icons/fa6";
+import { IoLogoGithub} from "react-icons/io";
+import { SiLeetcode } from "react-icons/si";
+import { Button} from "@mui/material";
+import { styled } from "@mui/system";
 
-import { SiMongodb } from "react-icons/si";
-import { SiExpress } from "react-icons/si";
-import { FaReact } from "react-icons/fa";
-import { FaNodeJs } from "react-icons/fa6";
 
 import { ReactTyped } from "react-typed";
 
 function Home() {
+  const CvButton = styled(Button)(({ theme }) => ({
+    backgroundColor: "#00c8ff",
+    color: "white",
+    marginTop: "20px",
+    padding: "10px 20px",
+    borderRadius: "25px",
+    fontSize: "1rem",
+    textTransform: "none",
+    boxShadow: "0px 4px 10px rgba(0,200,255,0.3)",
+    "&:hover": {
+      backgroundColor: "#00b2e2",
+    },
+  }));
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/Assets/Rohit-React-Resume.pdf";
+    link.download = "Rohit_Resume.pdf";
+    link.click();
+  };  
   return (
     <>
       <div
@@ -25,11 +42,11 @@ function Home() {
           <div className="md:w-1/2 mt-12 md:mt-24 space-y-2 order-2 md:order-1">
             <span className="text-xl">Welcome In My Feed</span>
             <div className="flex space-x-1 text-2xl md:text-4xl">
-              <h1>Hello, I'm a</h1>
+              <h1>Hello,It's Me</h1>
               {/* <span >Developer</span> */}
               <ReactTyped
-                className="text-red-700 font-bold"
-                strings={["Developer", "Programmer", "Coder"]}
+                className="text-sky-400 font-bold"
+                strings={["Rohit","React Developer"]}
                 typeSpeed={40}
                 backSpeed={50}
                 loop={true}
@@ -37,51 +54,46 @@ function Home() {
             </div>
             <br />
             <p className="text-sm md:text-md text-justify">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Quisquam, recusandae consequatur. Accusamus sint libero eligendi
-              laborum fuga repudiandae? Asperiores tempore eos animi dolores
-              corrupti! Sint quos, mollitia architecto aliquam nesciunt, optio
-              cum delectus sit voluptatum aut ratione quaerat veniam aperiam!
+            I am deeply passionate about continuously enhancing my technical skills and staying driven by the desire to learn and grow. Embracing new challenges, I am always eager to take on innovative tasks and contribute to dynamic projects.
+
             </p>
             <br />
             {/* social media icons */}
-            <div className="flex flex-col items-center md:flex-row justify-between space-y-6 md:space-y-0">
+            <div className="  flex flex-col  md:flex-row justify-between space-y-6 md:space-y-0 sm:justify-start">
               <div className="  space-y-2">
-                <h1 className="font-bold text-center ">Available on</h1>
-                <ul className="flex space-x-5">
+                <h1 className="font-bold  ">Available on</h1>
+                <ul className="flex space-x-5 mb-4">
                   <li>
                     <a href="https://www.facebook.com/" target="_blank">
-                      <FaSquareFacebook className="text-2xl cursor-pointer" />
+                      <FaInstagram className="text-3xl cursor-pointer  text-sky-400  mb-4" />
                     </a>
                   </li>
                   <li>
                     <a href="https://www.linkedin.com/" target="_blank">
-                      <FaLinkedin className="text-2xl cursor-pointer" />
+                      <FaLinkedin className="text-3xl cursor-pointer text-sky-400 mb-4 " />
                     </a>
                   </li>
                   <li>
                     <a href="https://www.youtube.com/" target="_blank">
-                      <IoLogoYoutube className="text-2xl cursor-pointer" />
+                      <IoLogoGithub className="text-3xl cursor-pointer text-sky-400 mb-4 " />
                     </a>
                   </li>
                   <li>
                     <a href="https://t.me/" target="_blank">
-                      <FaTelegram className="text-2xl cursor-pointer" />
+                      <SiLeetcode className="text-3xl cursor-pointer text-sky-400  mb-4" />
                     </a>
                   </li>
                 </ul>
+        
               </div>
-              <div className=" space-y-2">
-                <h1 className="font-bold text-center">Currently working on</h1>
-                <div className="flex space-x-5">
-                  <SiMongodb className="text-2xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px] cursor-pointer" />
-                  <SiExpress className="text-2xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px] cursor-pointer" />
-                  <FaReact className="text-2xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px] cursor-pointer" />
-                  <FaNodeJs className="text-2xl md:text-3xl hover:scale-110 duration-200 rounded-full border-[2px] cursor-pointer" />
-                </div>
-              </div>
+           
+       
             </div>
+            <CvButton onClick={handleDownload} variant="contained" >
+          Download CV
+        </CvButton>
           </div>
+          
           <div className="md:w-1/2 md:ml-48 md:mt-20 mt-8 order-1">
             <img
               src={pic}
@@ -90,9 +102,11 @@ function Home() {
             />
           </div>
         </div>
+      
       </div>
+    
 
-      <hr />
+
     </>
   );
 }

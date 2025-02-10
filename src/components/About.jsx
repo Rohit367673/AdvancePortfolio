@@ -1,73 +1,105 @@
 import React from "react";
+import { Container, Typography, Box, Divider } from "@mui/material";
+import { styled, keyframes } from "@mui/system";
+
+// Define a fade-in animation with upward movement
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+// Styled Container for the About section with a dark background
+const AboutContainer = styled(Container)(({ theme }) => ({
+  backgroundColor: "#0d1117",
+  color: "white",
+  padding: theme.spacing(8, 0),
+}));
+
+// A reusable section component that applies the fadeIn animation with a custom delay
+const Section = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "delay"
+})(({ delay }) => ({
+  animation: `${fadeIn} 0.8s ease forwards`,
+  opacity: 0,
+  animationDelay: delay,
+  marginBottom: "2rem",
+}));
+
+// A styled Typography for section headings with a hover glow effect
+const SectionTitle = styled(Typography)({
+  color: "#00c8ff",
+  cursor: "default",
+  transition: "text-shadow 0.3s ease",
+  "&:hover": {
+    textShadow: "0px 0px 8px rgba(0,200,255,0.7)",
+  },
+});
+
+// Animated Image component for the certificate with fadeIn animation
+const AnimatedImage = styled("img")(({ delay = "0.5s" }) => ({
+  animation: `${fadeIn} 0.8s ease forwards`,
+  animationDelay: delay,
+  opacity: 0,
+  height: "21rem", // Set desired height
+  width: "25%",   // Adjust width as needed
+  marginTop: "1rem",
+ 
+}));
 
 function About() {
   return (
-    <div
-      name="About"
-      className="max-w-screen-2xl container mx-auto px-4 md:px-20 my-20"
-    >
-      <div>
-        <h1 className="text-3xl font-bold mb-5">About</h1>
-        <p>
-          Hello, I'm Akhil, a passionate Web developer with a keen eye for MERN
-          Stack . With a background in IT, I strive to create impactful and
-          visually stunning Software solutions that leave a lasting impression.
-        </p>
-        <br />
-        <h1 className="text-green-600 font-semibold text-xl">
-          Education & Training
-        </h1>
-        <span>
-          [Degree/Certification], [Institution], [Year] [Degree/Certification],
-          [Institution], [Year] [Relevant Course], [Platform/Institution],
-          [Year]
-        </span>
-        <br />
-        <br />
-        <h1 className="text-green-600 font-semibold text-xl">
-          Skills & Expertise
-        </h1>
-        <span>
-          Proficient in [Programming Languages] Experienced with [Software
-          Tools/Technologies] Strong grasp of [Design Principles/Concepts]
-          Excellent problem-solving skills Effective communicator and
-          collaborator
-        </span>
-        <br />
-        <br />
-        <h1 className="text-green-600 font-semibold text-xl">
-          Professional Experience
-        </h1>
-        <span>
-          [Job Title], [Company/Organization], [Dates] [Brief description of
-          responsibilities and achievements] [Job Title],
-          [Company/Organization], [Dates] [Brief description of responsibilities
-          and achievements] [Freelance/Contract Work], [Client/Organization],
-          [Dates] [Brief description of projects and contributions]
-        </span>
-        <br />
-        <br />
-        <h1 className="text-green-600 font-semibold text-xl">
-          Achievements & Awards
-        </h1>
-        <span>
-          [Award/Recognition], [Organization/Institution], [Year] [Achievement],
-          [Organization/Platform], [Year]
-        </span>
-        <br />
-        <br />
-        <h1 className="text-green-600 font-semibold text-xl">
-          Mission Statement
-        </h1>
-        <p>
-          My mission is to leverage my skills and creativity to deliver
-          innovative [Your Field] solutions that exceed client expectations and
-          contribute positively to the digital landscape. I am committed to
-          continuous learning and growth, always seeking new challenges and
-          opportunities to expand my horizons.
-        </p>
-      </div>
-    </div>
+    <AboutContainer maxWidth="lg" id="About">
+      {/* About Introduction */}
+      <Section delay="0.2s">
+        {/* Introduction content can go here */}
+      </Section>
+
+    
+
+      {/* Education & Training */}
+      <Section delay="0.4s">
+        <SectionTitle variant="h5" gutterBottom>
+          Education & Experience
+        </SectionTitle>
+        <Typography variant="body1">
+          MCM DAV College New Kangra, BCA, 2020-2023 <br />
+          Web Developer, Development Logics, June 2024 - October 2024 <br />
+          Freelancing Web Development From December 2024 <br />
+          IBM Full Stack Development Course 
+        </Typography>
+      </Section>
+
+      <Divider light sx={{ backgroundColor: "#00c8ff", my: 2 }} />
+
+      {/* Certificates Section */}
+      <Section delay="1s">
+        <SectionTitle variant="h5" gutterBottom>
+          Certificates
+        </SectionTitle>
+        {/* Centering the certificate image */}
+        <Box display="flex" justifyContent="center" alignItems="center" gap="2rem">
+          <AnimatedImage
+            src="/public/Certificate1.jpeg" // Replace with your certificate image URL
+            alt="Certificate"
+            delay="1.2s"
+    
+          />
+            <AnimatedImage
+            src="/public/images.png" // Replace with your certificate image URL
+            alt="Certificate"
+            delay="1.2s"
+            
+       
+          />
+        </Box>
+      </Section>
+    </AboutContainer>
   );
 }
 
